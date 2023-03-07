@@ -3,6 +3,14 @@
 # Tiger
 A **Tig**ht-fisted Optimiz**er**， 一个“抠”到极致的优化器！
 
+## 特性
+
+- 不逊色于[AdamW](https://arxiv.org/abs/1711.05101)和[LAMB](https://arxiv.org/abs/1904.00962)的效果；
+- 梯度累积下的显存需求最小化；
+- 类似[LAMB](https://arxiv.org/abs/1904.00962)的分参数学习率自适应；
+- 简单的预防模型崩溃到NaN的策略；
+- 可以模拟任意schedule的分段线性学习率。
+
 ## 简介
 
 Tiger、Lion和AdamW的对比：
@@ -15,14 +23,6 @@ Tiger只用到了动量来构建更新量，根据[《隐藏在动量中的梯�
 
 - 博客1：https://kexue.fm/archives/9512
 - 博客2：https://kexue.fm/archives/8634
-
-## 特性
-
-- 不逊色于[AdamW](https://arxiv.org/abs/1711.05101)和[LAMB](https://arxiv.org/abs/1904.00962)的效果；
-- 梯度累积下的显存需求最小化；
-- 类似[LAMB](https://arxiv.org/abs/1904.00962)的分参数学习率自适应；
-- 简单的预防模型崩溃到NaN的策略；
-- 可以模拟任意schedule的分段现行学习率。
 
 ## 使用
 

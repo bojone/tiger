@@ -46,7 +46,8 @@ optimizer = Tiger(
     }
 )
 
-model.compile(loss='categorical_crossentropy', optimizer=optimizer)```
+model.compile(loss='categorical_crossentropy', optimizer=optimizer)
+```
 
 ## 鸣谢
 

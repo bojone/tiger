@@ -6,11 +6,11 @@ A **Tig**ht-fisted Optimiz**er**, an optimizer that is extremely budget-consciou
 
 ## Features
 
-- Comparable performance to [AdamW](https://arxiv.org/abs/1711.05101) and [LAMB](https://arxiv.org/abs/1904.00962)
-- Minimal memory usage under gradient accumulation
-- Similar to [LAMB](https://arxiv.org/abs/1904.00962), with adaptive per-parameter learning rates
-- Simple strategy for preventing model crashing to NaN
-- Can simulate segmented linear learning rate schedules
+- Achieves comparable performance to [AdamW](https://arxiv.org/abs/1711.05101) and [LAMB](https://arxiv.org/abs/1904.00962)的效果.
+- Minimizes memory requirements when using gradient accumulation.
+- Adaptive learning rates per parameter, similar to [LAMB](https://arxiv.org/abs/1904.00962).
+- Simple strategy to prevent the model from collapsing to NaN.
+- Can simulate any lr schedule with piecewise linear learning rates.
 
 ## Introduction
 

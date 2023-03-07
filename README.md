@@ -5,6 +5,8 @@ A **Tig**ht-fisted Optimiz**er**， 一个“抠”到极致的优化器！
 
 ## 简介
 
+Tiger、Lion和AdamW的对比：
+
 <img src="https://raw.githubusercontent.com/bojone/tiger/main/Tiger-Lion-AdamW.png" width=100%>
 
 从[Lion](https://kexue.fm/archives/9473)的视角，Tiger是一个简化版的Lion（beta1=beta2）；从[SignSGD](https://arxiv.org/abs/1802.04434)的视角，Tiger是一个带有动量和weight decay的SignSGD。
@@ -16,7 +18,39 @@ Tiger只用到了动量来构建更新量，根据[《隐藏在动量中的梯�
 
 ## 特性
 
+- 不逊色于[AdamW](https://arxiv.org/abs/1711.05101)和[LAMB](https://arxiv.org/abs/1904.00962)的效果；
+- 梯度累积下的显存需求最小化；
+- 类似[LAMB](https://arxiv.org/abs/1904.00962)的分参数学习率自适应；
+- 简单的预防模型崩溃到NaN的策略；
+- 可以模拟任意schedule的分段现行学习率。
+
+## 使用
+
+目前的实现在tensorflow 1.15下开发，估计tensorflow 2.x的前几个版本也能用，后面的版本由于没有使用经验，不确定能否可用。
+
+参考代码：
+
+```python
+from tiger import Tiger
+
+optimizer = Tiger(
+    learning_rate=1.76e-3,  # 全局相对学习率lr
+    beta=0.965,  # beta参数
+    weight_decay=0.01,  # 权重衰减率
+    grad_accum_steps=4,  # 梯度累积步数
+    lr_schedule={
+        40000: 1,  # 前40k步，学习率从0线性增加到1*lr【即warmup步数为40000/4步】
+        160000: 0.5,  # 40k-160k步，学习率从1*lr线性降低到0.5*lr
+        640000: 0.1,  # 160k-640k步，学习率从0.5*lr线性降低到0.1*lr
+        1280000: 0.01,  # 640k-1280k步，学习率从0.1*lr线性降低到0.01*lr，并在之后保持不变
+    }
+)
+
+model.compile(loss='categorical_crossentropy', optimizer=optimizer)```
+
 ## 鸣谢
+
+特别感谢Lion的充分实验，以及Lion作者们的友好交流。
 
 ## 引用
 

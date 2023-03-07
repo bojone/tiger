@@ -5,7 +5,7 @@ A **Tig**ht-fisted Optimiz**er**， 一个“抠”到极致的优化器！
 
 ## 简介
 
-<img src="https://raw.githubusercontent.com/bojone/tiger/main/Tiger-Lion-AdamW.png" width=70%>
+<img src="https://raw.githubusercontent.com/bojone/tiger/main/Tiger-Lion-AdamW.png" width=100%>
 
 从[Lion](https://kexue.fm/archives/9473)的视角，Tiger是一个简化版的Lion（beta1=beta2）；从[SignSGD](https://arxiv.org/abs/1802.04434)的视角，Tiger是一个带有动量和weight decay的SignSGD。
 
